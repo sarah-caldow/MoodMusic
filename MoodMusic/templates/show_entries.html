@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="row">
+    <div id="genretags" class="col-md-3">
+      <ul class=entries class="list-group">
+        {% for genre in entries.genres %}
+        <li class="list-group-item">{{ genre }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="player" class="col-md-5">
+      <div class="row">
+        <div class="col-md-4 centered-image">
+          <img class="cover-art" src="/static/img/regina_spektor.jpg" alt="album art">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <iframe src="https://open.spotify.com/embed?uri=spotify:track:5JunxkcjfCYcY7xJ29tLai"
+        frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+        </div>
+      </div>
+    </div>
+    <div id="upcoming" class="col-md-3">
+      <ul class=entries class="list-group">
+        {% for tweet in entries.tweets %}
+        <li class="list-group-item">{{ tweet }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+{% endblock %}
