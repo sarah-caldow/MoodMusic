@@ -1,14 +1,26 @@
 import tweepy
 import json
-from MoodMusic import keys
+from MoodMusic.application import keys
 from datetime import datetime
 from datetime import timedelta
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-def getTweets():
-    user = '@MatthewMercer'
+#calculates user emotional baseline based on tweets in the last month
+def calculateBaseline(sid, tweets):
+    
+    return 0;
+
+#calculcates the sentiment score of the user to be used in music recommendation and 
+#converts sentiment to useable range (from 0.0-2.0)
+def calculateSentiment(sid, tweet):
+    ss = sid.polarity_scores(tweet)
+    for k in ss:
+        ss[k][2] = ss[k][2]+1
+    return ss;
+
+def getTweets(timerange, num_tweets):
+    user = '@executivegoth'
     tweets = []
-    #set range of tweet time from now to x hours before now 
-    timerange = 12;
 
     # Authenticate
     auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
@@ -41,8 +53,13 @@ def stripTweet(tweet):
     strin = " ".join(newword)
     return strin
             
-#if __name__ == '__main__':
-#    tweets = getTweets()
-#    for tweet in tweets:
-#        print(tweet.text.encode("utf-8", errors="replace"))
+if __name__ == '__main__':
+    tweets = getTweets(6, 20)
+    sid = SentimentIntensityAnalyzer()
+    for tweet in tweets:
+        print(tweet)
+        ss = sid.polarity_scores(tweet)
+        for k in sorted(ss):
+            print('{0}: {1}, '.format(k, ss[k]), end='')
+        print()
 

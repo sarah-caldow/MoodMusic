@@ -1,5 +1,4 @@
+*.egg-info/
+__pycache__/
 virtualenv/
 
-MoodMusic.egg-info
-playlist-creator/
-__pycache__/
