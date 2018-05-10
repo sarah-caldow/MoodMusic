@@ -1,4 +1,6 @@
 *.egg-info/
 __pycache__/
 virtualenv/
-
+MoodMusic - Copy/
+MoodMusic/venv
+MoodMusic5.10.18.zip

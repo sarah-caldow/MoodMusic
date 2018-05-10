@@ -3,24 +3,57 @@
   <div class="row">
     <div id="genretags" class="col-md-3">
       <ul class=entries class="list-group">
+        <table>
+        <form action="/" method='POST'>
         {% for genre in entries.genres %}
-        <li class="list-group-item">{{ genre }}</li>
+        <tr><td>
+          <input type="checkbox" id="{{ genre }}" value={{ genre }} name=current-genre>
+          <label for={{ genre }}>{{ genre }}</label>
+        </td></tr>
         {% endfor %}
+        <tr><td>
+        <input type="submit" value="Submit">
+      </tr></td>
+      </table>
+      </form>
       </ul>
+    </div>
+    <div class="current-genre2">
+        <h2>The current selected genre(s): </h2>
+          <br/>
+          <ul>
+          {% for genre in current_genres %}
+          <li> {{ genre }} </li>
+          {% endfor %}
+          <li> the mood is {{ moodTag }} </li>
+        </ul>
+
     </div>
     <div id="player" class="col-md-5">
       <div class="row">
         <div class="col-md-4 centered-image">
-          <img class="cover-art" src="/static/img/regina_spektor.jpg" alt="album art">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <iframe src="https://open.spotify.com/embed?uri=spotify:track:5JunxkcjfCYcY7xJ29tLai"
-        frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+          <table>
+            <tr>
+              <td>
+                <div class="col-md-12">
+                  <iframe src= {{ current_song }} frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+                </div>
+                <!---
+                <form action="\" method="post" name="next_button">
+                <button name="next" type="submit" onclick="next_song()">Next</button>
+              </form>--->
+              </td>
+            {% for song in cover_art  %}
+              <td><img class="cover-art" src={{ song }} alt="album art"></td>
+              {% if loop.index0 % 2 == 1 %}
+            </tr><td></td>
+              {% endif %}
+            {% endfor %}
+          </table>
         </div>
       </div>
     </div>
+    <h5>
     <div id="upcoming" class="col-md-3">
       <ul class=entries class="list-group">
         {% for tweet in entries.tweets %}
@@ -28,6 +61,7 @@
         {% endfor %}
       </ul>
     </div>
+  </h5>
   </div>
-  
+
 {% endblock %}
