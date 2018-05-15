@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
   <h2>Login</h2>
-  <!---{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}--->
+  <!--{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}-->
   <form action="/mood" method="POST">
     <dl>
       <dt>Twitter Handle:</dt>
       <dd><input type=text name="twitter"></dd>
-        <!---
+        <!--
       <dt>Spotify Username:
       <dd><input type=text name="username">
       <dt>Spotify Password:
       <dd><input type=password name="password">
-      --->
+      -->
       <dd><input type=submit value=Login></dd>
     </dl>
   </form>
