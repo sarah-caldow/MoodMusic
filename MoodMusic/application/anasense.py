@@ -12,8 +12,8 @@ musicDict = {'country_sad': [['Billy Joe Royal', 'Down in the Boondocks'], ['Mir
 
 #calculates an average sentiment for a list of tweets
 def calculateAverageSentiment(sid, tweets):
-    low = 0
-    high = 10
+    low = 10
+    high = -10
     sum_sent = 0
     i = 0
     for tweet in tweets:
@@ -96,7 +96,7 @@ def determineMood(user):
     #set parameters of baseline
     mean = baseline["avg"]
     mood = unalteredMood["avg"] - mean
-    radius = (baseline["low"] + baseline["high"])/2
+    radius = (abs(baseline["low"]) + abs(baseline["high"]))/2
 
     #if the only tweets made are the tweets included in the baseline
     if (baseline['avg'] == unalteredMood['avg']):
