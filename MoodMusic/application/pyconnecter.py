@@ -97,4 +97,5 @@ if __name__ == '__main__':
         for list in musicDict[key]:
             print(list[1] + " by " + list[0])
             showCoverArt(list[1],list[0],spotifyObject)
+
 '''

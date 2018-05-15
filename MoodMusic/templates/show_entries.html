@@ -2,9 +2,10 @@
 {% block body %}
   <div class="row">
     <div id="genretags" class="col-md-3">
+      <h2> Select One or More Genres: </h2>
       <ul class=entries class="list-group">
         <table>
-        <form action="/" method='POST'>
+        <form action="/play" method='POST'>
         {% for genre in entries.genres %}
         <tr><td>
           <input type="checkbox" id="{{ genre }}" value={{ genre }} name=current-genre>
@@ -16,43 +17,6 @@
       </tr></td>
       </table>
       </form>
-      </ul>
-    </div>
-    <div class="current-genre2">
-        <h2>The current selected genre(s): </h2>
-          <br/>
-          <ul>
-          {% for genre in current_genres %}
-          <li> {{ genre }} </li>
-          {% endfor %}
-          <li> the mood is {{ moodTag }} </li>
-        </ul>
-
-    </div>
-    <div id="player" class="col-md-5">
-      <div class="row">
-        <div class="col-md-4 centered-image">
-          <table>
-            <tr>
-              <td>
-                <div class="col-md-12">
-                  <iframe src= {{ current_song }} frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
-                </div>
-                <!---
-                <form action="\" method="post" name="next_button">
-                <button name="next" type="submit" onclick="next_song()">Next</button>
-              </form>--->
-              </td>
-            {% for song in cover_art  %}
-              <td><img class="cover-art" src={{ song }} alt="album art"></td>
-              {% if loop.index0 % 2 == 1 %}
-            </tr><td></td>
-              {% endif %}
-            {% endfor %}
-          </table>
-        </div>
-      </div>
-    </div>
     <h5>
     <div id="upcoming" class="col-md-3">
       <ul class=entries class="list-group">

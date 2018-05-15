@@ -78,7 +78,8 @@ def determineTagMood(sid, tags):
 #determines the baseline and unaltered mood and applies the baseline to the calculated mood
 def determineMood(user):
     sid = SentimentIntensityAnalyzer()
-    moods = ["sad", "happy", "rage", "chill"]
+    #moods = ["sad", "happy", "rage", "chill"]
+    moods = ["sad", "happy", "chill"] #Without Rage
     baselineTweets = getTweets(168, 200, user)
     relevantMoodTweets = baselineTweets[:20]
 
@@ -133,6 +134,7 @@ def determineMood(user):
     #print("Nearest Tag:")
     #print(tags[pic])
 
+    #return baseline #TO TEST BASELINE RATING
     return tags[pic]
 
 #generate keys to access dictionary
@@ -199,10 +201,11 @@ def generateSongs(mood, genres):
 #    print (dictionary)
 
 if __name__ == '__main__':
-    user = '@matthewmercer'
+    user = '@HCI_Mood_Music'
     genres = ['hip-hop', 'country', 'jazz']
 
     sid = SentimentIntensityAnalyzer()
     moodTag = determineMood(user)
-    for song in generateSongs(moodTag, genres):
-        print(song)
+    print(moodTag)
+    #for song in generateSongs(moodTag, genres):
+        #print(song)
