@@ -81,16 +81,16 @@ def determineMood(user):
     #moods = ["sad", "happy", "rage", "chill"]
     moods = ["sad", "happy", "chill"] #Without Rage
     baselineTweets = getTweets(168, 200, user)
-    relevantMoodTweets = baselineTweets[:20]
+    relevantMoodTweets = baselineTweets[:5]
 
     #find average range of moods, set mood words based on these emotions
     baseline = calculateAverageSentiment(sid, baselineTweets)
     unalteredMood = calculateAverageSentiment(sid, relevantMoodTweets)
 
-    #print("Calculated Baseline:")
-    #print(baseline["avg"])
-    #print("Unaltered Mood:")
-    #print(unalteredMood["avg"])
+    print("Calculated Baseline:")
+    print(baseline["avg"])
+    print("Unaltered Mood:")
+    print(unalteredMood["avg"])
 
     #determine mood for user based on their baseline from the past week
     #set parameters of baseline
@@ -107,15 +107,15 @@ def determineMood(user):
     elif (mood > 0 and mood > radius):
         radius = mood
 
-    #print("")
-    #print("Adjusted Mood:")
-    #print(mood)
-    #print("High tweet:")
-    #print(baseline['high'])
-    #print("Low tweet:")
-    #print(baseline['low'])
-    #print("Calculated Radius:")
-    #print(radius)
+    print("")
+    print("Adjusted Mood:")
+    print(mood)
+    print("High tweet:")
+    print(baseline['high'])
+    print("Low tweet:")
+    print(baseline['low'])
+    print("Calculated Radius:")
+    print(radius)
 
     #get sentiment score for tads
     unadjTags = determineTagMood(sid, moods)
@@ -128,11 +128,11 @@ def determineMood(user):
     #determine tag for user
     pic = min(tags, key=lambda x:abs(x-mood))
 
-    #print("")
-    #print("Nearest Sentiment:")
-    #print(pic)
-    #print("Nearest Tag:")
-    #print(tags[pic])
+    print("")
+    print("Nearest Sentiment:")
+    print(pic)
+    print("Nearest Tag:")
+    print(tags[pic])
 
     #return baseline #TO TEST BASELINE RATING
     return tags[pic]
